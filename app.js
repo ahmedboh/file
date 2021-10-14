@@ -33,13 +33,18 @@ app.use('/api/v1/user',userRouter);
 app.use('/api/v1/commande',CommandeRouter); 
 
 if (process.env.NODE_ENV === 'PRODUCTION') {
+    console.log('aaa')
     app.use(express.static(path.join(__dirname, 'build')))
 
     app.get('/', (req, res) => {
         res.sendFile(path.resolve(__dirname, 'build/index.html'))
     })
 }
+app.use(express.static(path.join(__dirname, 'build')))
 
+    app.get('/', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'build/index.html'))
+    })
 app.use(errorMiddleware);
 
 
